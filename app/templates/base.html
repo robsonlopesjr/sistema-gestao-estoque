@@ -18,7 +18,12 @@
 </head>
 
 <body>
+    {% include "components/_header.html" %}
+
     <div class="container-fluid">
+
+        {% include "components/_sidebar.html" %}
+
         <div class="col py-3">
 
             <div class="container mt-4">
@@ -32,6 +37,8 @@
     </div>
      
     </div>
+
+    {% include "components/_footer.html" %}
 </body>
 
 </html>
