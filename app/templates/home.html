@@ -14,11 +14,15 @@
             <canvas id="dailySalesChart"></canvas>
         </div>
 
-        <div class="col-md-6 text-center"></div>
+        <div class="col-md-6 text-center">
+            <h5 class="text-center mb-3">Quantidade de Vendas Diárias</h5>
+            <canvas id="dailySalesQuantityChart"></canvas>
+        </div>
 
         <script>
             document.addEventListener("DOMContentLoaded", function () {
                 var dailySalesData = JSON.parse('{{ daily_sales_data|safe }}');
+                var dailySalesQuantityData = JSON.parse('{{ daily_sales_quantity_data|safe }}');
 
                 var ctxDailySales = document.getElementById('dailySalesChart').getContext('2d');
 
@@ -43,7 +47,29 @@
                         }
                     }
                 })
-            });
+
+                var ctxDailySalesQuantity = document.getElementById('dailySalesQuantityChart').getContext('2d');
+                var dailySalesQuantityChart = new Chart(ctxDailySalesQuantity, {
+                    type: 'bar',
+                    data: {
+                        labels: dailySalesQuantityData.dates,
+                        datasets: [{
+                            label: 'Quantidade de Vendas',
+                            data: dailySalesQuantityData.values,
+                            backgroundColor: 'rgba(255, 99, 132, 0.6)',
+                            borderColor: 'rgba(255, 99, 132, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                })
+            })
         </script>
     </div>
 {% endblock content %}
