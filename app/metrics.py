@@ -1,6 +1,7 @@
 from django.db.models import Sum, F
 from django.utils import timezone
 from django.utils.formats import number_format
+from categories.models import Category
 from products.models import Product
 from outflows.models import Outflow
 
@@ -75,3 +76,8 @@ def get_daily_sales_quantity_data():
         dates = dates,
         values = quantities
     )
+
+
+def get_product_count_by_category():
+    categories = Category.objects.all()
+    return {category.name: Product.objects.filter(category=category).count() for category in categories}
