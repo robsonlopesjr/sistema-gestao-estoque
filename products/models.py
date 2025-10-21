@@ -2,6 +2,7 @@ from django.db import models
 from categories.models import Category
 from brands.models import Brand
 
+
 class Product(models.Model):
     title = models.CharField(max_length=500)
     category = models.ForeignKey(Category, on_delete=models.PROTECT, related_name='products')

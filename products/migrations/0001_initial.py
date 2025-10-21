@@ -26,8 +26,12 @@ class Migration(migrations.Migration):
                 ('quantity', models.IntegerField(default=0)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('updated_at', models.DateTimeField(auto_now=True)),
-                ('brand', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='products', to='brands.brand')),
-                ('category', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='products', to='categories.category')),
+                ('brand', models.ForeignKey(
+                    on_delete=django.db.models.deletion.PROTECT,
+                    related_name='products', to='brands.brand')),
+                ('category', models.ForeignKey(
+                    on_delete=django.db.models.deletion.PROTECT,
+                    related_name='products', to='categories.category')),
             ],
             options={
                 'ordering': ['title'],
