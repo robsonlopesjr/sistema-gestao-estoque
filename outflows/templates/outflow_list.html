@@ -4,7 +4,9 @@
 
 {% block content %}
 
+{% if perms.outflows.view_outflow %}
 {% include "components/_sales_metrics.html" %}
+{% endif %}
 
 <div class="row mb-3"></div>
 

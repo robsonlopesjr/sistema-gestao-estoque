@@ -4,7 +4,9 @@
 
 {% block content %}
 
+{% if perms.products.view_product and perms.inflows.view_inflow %}
 {% include "components/_product_metrics.html" %}
+{% endif %}
 
 <div class="row mb-3"></div>
 
